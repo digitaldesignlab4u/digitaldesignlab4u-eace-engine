@@ -240,6 +240,23 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 .foot-links-bottom{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
 .foot-links-bottom a{font-family:var(--mono);font-size:10px;color:var(--faint);text-decoration:none;transition:color 0.15s}
 .foot-links-bottom a:hover{color:var(--muted)}
+
+/* ── LICENSING ── */
+.lic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:640px){.lic-grid{grid-template-columns:1fr}}
+.lic-card{background:var(--bg2);border:0.5px solid var(--line);border-radius:var(--r);padding:1.25rem 1.4rem;transition:border-color 0.2s}
+.lic-card:hover{border-color:var(--line2)}
+.lic-card.featured{border-color:rgba(201,168,76,0.35)}
+.lic-tag{font-family:var(--mono);font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:0.5px solid rgba(201,168,76,0.4);padding:2px 7px;border-radius:2px;display:inline-block;margin-bottom:0.85rem}
+.lic-title{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:0.4rem}
+.lic-desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.lic-list{list-style:none}
+.lic-list li{font-family:var(--mono);font-size:9.5px;color:var(--faint);padding:5px 0;border-bottom:0.5px solid var(--line);display:flex;align-items:flex-start;gap:6px}
+.lic-list li:last-child{border-bottom:none}
+.lic-list li::before{content:'→';color:var(--gold);flex-shrink:0}
+.lic-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 2rem}
+.lic-divider-line{flex:1;height:0.5px;background:var(--line2)}
+.lic-divider-label{font-family:var(--mono);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 </style>
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
@@ -483,7 +500,7 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
         <p style="font-size:10.5px;color:var(--muted,#666);margin:0;">Sample document — for preview purposes only. Not for regulatory submission. &copy; 2026 EU AI Compliance Engine.</p>
       </div>
       <div id="sample-modal-body" style="flex:1;overflow:hidden;min-height:0;">
-        <iframe id="sample-modal-iframe" src="" title="Sample document preview" style="width:100%;height:100%;border:none;display:block;min-height:540px;"></iframe>
+        <object id="sample-modal-iframe" data="" type="application/pdf" style="width:100%;height:100%;border:none;display:block;min-height:540px;"><p style="color:var(--muted);font-family:var(--mono);font-size:11px;padding:2rem;text-align:center;">PDF se ne može prikazati u browseru. <a id="sample-modal-fallback" href="#" target="_blank" style="color:var(--gold)">Otvori PDF →</a></p></object>
       </div>
     </div>
   </div>
@@ -728,6 +745,52 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
   </div>
 </section>
 
+<!-- LICENSING -->
+<section class="sec" id="licensing" aria-labelledby="licensing-heading">
+  <p class="sec-label">Licensing &amp; Enterprise</p>
+  <h2 id="licensing-heading">Structured pathways for <em>every scale.</em></h2>
+  <p class="sec-intro">Access is provided through a controlled licensing model. Each path includes usage rights, access tiers, and a structured onboarding process designed to protect the system's integrity and ensure correct deployment.</p>
+  <div class="lic-grid">
+    <div class="lic-card">
+      <span class="lic-tag">Individual</span>
+      <p class="lic-title">Individual Licensing</p>
+      <p class="lic-desc">For compliance professionals deploying EACE for their own systems or single-client engagements.</p>
+      <ul class="lic-list">
+        <li>Single-entity usage rights</li>
+        <li>Full engine access</li>
+        <li>Structured onboarding</li>
+        <li>Version-controlled outputs</li>
+      </ul>
+    </div>
+    <div class="lic-card featured">
+      <span class="lic-tag">Partnership</span>
+      <p class="lic-title">Partner Programme</p>
+      <p class="lic-desc">For law firms and consulting practices using EACE as a back-end delivery system for client engagements.</p>
+      <ul class="lic-list">
+        <li>White-label delivery rights</li>
+        <li>Multi-client deployment</li>
+        <li>Priority access &amp; support</li>
+        <li>Co-branding options</li>
+      </ul>
+    </div>
+    <div class="lic-card">
+      <span class="lic-tag">Enterprise</span>
+      <p class="lic-title">Enterprise Onboarding</p>
+      <p class="lic-desc">For organisations standardising AI governance across multiple systems, business units, or jurisdictions.</p>
+      <ul class="lic-list">
+        <li>Portfolio-wide deployment</li>
+        <li>Custom sector overlays</li>
+        <li>Dedicated onboarding</li>
+        <li>SLA &amp; audit support</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cta-row" style="margin-top:2rem">
+    <a href="#contact" class="btn btn-primary">Express interest →</a>
+    <a href="#contact" class="btn-ghost" style="font-family:var(--mono);font-size:10px;letter-spacing:0.04em;color:var(--muted);text-decoration:none;border:0.5px solid var(--line2);padding:10px 18px;border-radius:var(--r);display:inline-flex;align-items:center;min-height:44px;transition:border-color 0.15s,color 0.15s">Partnership enquiry →</a>
+  </div>
+</section>
+
 <!-- STANDALONE MODULES -->
 <section class="sec" id="modules" aria-labelledby="modules-heading">
   <p class="sec-label">02 · 03 — Standalone modules</p>
@@ -917,26 +980,25 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 </footer>
 
 <script>
-// Nav scroll + scroll-to-top — self-contained, no dependency on shared.js order
+// Nav scroll + scroll-to-top
 (function(){
   var nav=document.getElementById('main-nav');
   function updateScroll(){
     if(nav) nav.classList.toggle('scrolled',window.scrollY>60);
     var st=document.getElementById('scroll-top');
     if(st){
-      var show=window.scrollY>400;
+      var show=window.scrollY>300;
       st.style.opacity=show?'1':'0';
       st.style.pointerEvents=show?'auto':'none';
-      st.style.transform=show?'translateY(0)':'translateY(8px)';
+      st.style.transform=show?'translateY(0)':'translateY(12px)';
+      st.style.visibility=show?'visible':'hidden';
     }
   }
   window.addEventListener('scroll',updateScroll,{passive:true});
-  // Run once after DOM is ready
+  window.addEventListener('touchmove',updateScroll,{passive:true});
   if(document.readyState==='loading'){
     document.addEventListener('DOMContentLoaded',updateScroll);
-  } else {
-    updateScroll();
-  }
+  } else { updateScroll(); }
 })();
 
 // P1 scope check
@@ -1088,32 +1150,30 @@ function runP1Check(){
 <script>
 /* ── SAMPLE PDF MODAL ── */
 var SAMPLES = {
-  p2a: { title: 'P2A · Annex IV · Technical Documentation', file: 'P2A_AnnexIV_TechnicalDocumentation_SAMPLE.pdf' },
-  p2b: { title: 'P2B · FRIA + DPIA · Integrated Assessment', file: 'P2B_FRIA_DPIA_SAMPLE.pdf' },
-  fh:  { title: 'Family H · Health × Estonia · Sector Overlay', file: 'FamilyH_Health_Estonia_Overlay_SAMPLE.pdf' }
+  p2a: { title: 'P2A · Annex IV · Technical Documentation', img: 'P2A_sample.png', pdf: 'P2A_AnnexIV_TechnicalDocumentation_SAMPLE.pdf' },
+  p2b: { title: 'P2B · FRIA + DPIA · Integrated Assessment', img: 'P2B_sample.png', pdf: 'P2B_FRIA_DPIA_SAMPLE.pdf' },
+  fh:  { title: 'Family H · Health × Estonia · Sector Overlay', img: 'FamilyH_sample.png', pdf: 'FamilyH_Health_Estonia_Overlay_SAMPLE.pdf' }
 };
 function openSampleModal(key) {
   var s = SAMPLES[key]; if(!s) return;
   var modal = document.getElementById('sample-modal');
-  var iframe = document.getElementById('sample-modal-iframe');
-  var title  = document.getElementById('sample-modal-title');
-  var dl     = document.getElementById('sample-modal-download');
+  var body  = document.getElementById('sample-modal-body');
+  var title = document.getElementById('sample-modal-title');
+  var dl    = document.getElementById('sample-modal-download');
   title.textContent = s.title;
-  iframe.src = s.file;
-  dl.href = s.file;
-  dl.setAttribute('download', s.file);
+  dl.href = s.pdf;
+  dl.setAttribute('download', s.pdf);
+  body.innerHTML = '<img src="'+s.img+'" alt="'+s.title+'" style="width:100%;display:block;" loading="lazy">';
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  modal.focus();
 }
 function closeSampleModal() {
   var modal = document.getElementById('sample-modal');
-  var iframe = document.getElementById('sample-modal-iframe');
+  var body  = document.getElementById('sample-modal-body');
   modal.style.display = 'none';
-  iframe.src = '';
+  body.innerHTML = '';
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeSampleModal(); });
 document.getElementById('sample-modal').addEventListener('click', function(e){ if(e.target===this) closeSampleModal(); });
 </script>
 
