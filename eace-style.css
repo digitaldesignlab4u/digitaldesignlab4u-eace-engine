@@ -105,14 +105,13 @@ nav.scrolled{background:rgba(12,12,10,0.97);backdrop-filter:blur(10px);-webkit-b
   .nav-contact{padding:5px 11px;font-size:9.5px}
 }
 @media(max-width:640px){
-  .nav-inner{padding:0.7rem 1.25rem}
-  .nav-links{gap:0}
-  .nav-links a{font-size:9.5px;padding:4px 6px}
+  .nav-inner{padding:0.65rem 1.25rem}
+  .nav-links a{font-size:9px;padding:3px 5px}
   .nav-logo span{display:none}
   .nav-contact{display:none}
 }
-@media(max-width:480px){
-  .nav-links li:first-child{display:none}
+@media(max-width:520px){
+  .nav-links{display:none}
 }
 
 /* ── BTN ── */
