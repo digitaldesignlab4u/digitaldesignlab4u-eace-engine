@@ -39,7 +39,7 @@ img{max-width:100%;display:block}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,12,10,0);transition:background 0.3s,border-color 0.3s;border-bottom:0.5px solid transparent}
 nav.scrolled{background:rgba(12,12,10,0.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom-color:var(--line)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:960px;margin:0 auto;gap:1rem;flex-wrap:wrap}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 2rem;max-width:960px;margin:0 auto;gap:0.5rem;flex-wrap:nowrap}
 .nav-logo{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.08em;color:var(--gold);text-decoration:none;white-space:nowrap}
 .nav-logo span{color:rgba(255,255,255,0.45);font-weight:400}
 .nav-links{display:flex;list-style:none;flex-wrap:wrap;gap:2px}
@@ -512,8 +512,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
       <div style="padding:0.6rem 1.25rem;background:rgba(201,168,76,0.05);border-bottom:0.5px solid var(--line2,#2a2a2a);flex-shrink:0;">
         <p style="font-size:10.5px;color:var(--muted,#666);margin:0;">Sample document — for preview purposes only. Not for regulatory submission. &copy; 2026 EU AI Compliance Engine.</p>
       </div>
-      <div id="sample-modal-body" style="flex:1;overflow:hidden;min-height:0;">
-        <object id="sample-modal-iframe" data="" type="application/pdf" style="width:100%;height:100%;border:none;display:block;min-height:540px;"><p style="color:var(--muted);font-family:var(--mono);font-size:11px;padding:2rem;text-align:center;">PDF se ne može prikazati u browseru. <a id="sample-modal-fallback" href="#" target="_blank" style="color:var(--gold)">Otvori PDF →</a></p></object>
+      <div id="sample-modal-body" style="flex:1;overflow-y:auto;min-height:0;">
       </div>
     </div>
   </div>
@@ -1040,6 +1039,9 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
 </footer>
 
 <script>
+// Scroll to top
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
 // Nav scroll + scroll-to-top
 (function(){
   var nav=document.getElementById('main-nav');

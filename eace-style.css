@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
   border-bottom:0.5px solid transparent}
 nav.scrolled{background:rgba(12,12,10,0.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom-color:var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;
-  padding:0.9rem 2rem;max-width:960px;margin:0 auto;gap:1rem;flex-wrap:wrap}
+  padding:0.9rem 2rem;max-width:960px;margin:0 auto;gap:0.5rem;flex-wrap:nowrap}
 .nav-logo{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.08em;
   color:var(--gold);text-decoration:none;white-space:nowrap;min-height:44px;
   display:flex;align-items:center}
@@ -110,8 +110,9 @@ nav.scrolled{background:rgba(12,12,10,0.97);backdrop-filter:blur(10px);-webkit-b
   .nav-logo span{display:none}
   .nav-contact{display:none}
 }
-@media(max-width:520px){
+@media(max-width:600px){
   .nav-links{display:none}
+  .nav-logo span{display:none}
 }
 
 /* ── BTN ── */
@@ -459,7 +460,7 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 .cp-accept-all:hover{color:var(--ink);border-color:var(--muted)}
 
 /* ── SCROLL TO TOP — improved ── */
-#scroll-top:hover{border-color:var(--gold);color:var(--gold)}
+
 
 /* ── P1 PROCESSING ANIMATION ── */
 .p1-result{transition:opacity 0.2s}
