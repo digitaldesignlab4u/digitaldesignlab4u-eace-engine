@@ -1088,32 +1088,30 @@ function runP1Check(){
 <script>
 /* ── SAMPLE PDF MODAL ── */
 var SAMPLES = {
-  p2a: { title: 'P2A · Annex IV · Technical Documentation', file: 'P2A_AnnexIV_TechnicalDocumentation_SAMPLE.pdf' },
-  p2b: { title: 'P2B · FRIA + DPIA · Integrated Assessment', file: 'P2B_FRIA_DPIA_SAMPLE.pdf' },
-  fh:  { title: 'Family H · Health × Estonia · Sector Overlay', file: 'FamilyH_Health_Estonia_Overlay_SAMPLE.pdf' }
+  p2a: { title: 'P2A · Annex IV · Technical Documentation', img: 'P2A_sample.png', pdf: 'P2A_AnnexIV_TechnicalDocumentation_SAMPLE.pdf' },
+  p2b: { title: 'P2B · FRIA + DPIA · Integrated Assessment', img: 'P2B_sample.png', pdf: 'P2B_FRIA_DPIA_SAMPLE.pdf' },
+  fh:  { title: 'Family H · Health × Estonia · Sector Overlay', img: 'FamilyH_sample.png', pdf: 'FamilyH_Health_Estonia_Overlay_SAMPLE.pdf' }
 };
 function openSampleModal(key) {
   var s = SAMPLES[key]; if(!s) return;
   var modal = document.getElementById('sample-modal');
-  var iframe = document.getElementById('sample-modal-iframe');
-  var title  = document.getElementById('sample-modal-title');
-  var dl     = document.getElementById('sample-modal-download');
+  var body  = document.getElementById('sample-modal-body');
+  var title = document.getElementById('sample-modal-title');
+  var dl    = document.getElementById('sample-modal-download');
   title.textContent = s.title;
-  iframe.src = s.file;
-  dl.href = s.file;
-  dl.setAttribute('download', s.file);
+  dl.href = s.pdf;
+  dl.setAttribute('download', s.pdf);
+  body.innerHTML = '<img src="'+s.img+'" alt="'+s.title+'" style="width:100%;display:block;" loading="lazy">';
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  modal.focus();
 }
 function closeSampleModal() {
   var modal = document.getElementById('sample-modal');
-  var iframe = document.getElementById('sample-modal-iframe');
+  var body  = document.getElementById('sample-modal-body');
   modal.style.display = 'none';
-  iframe.src = '';
+  body.innerHTML = '';
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeSampleModal(); });
 document.getElementById('sample-modal').addEventListener('click', function(e){ if(e.target===this) closeSampleModal(); });
 </script>
 
