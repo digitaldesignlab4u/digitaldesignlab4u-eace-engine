@@ -240,6 +240,12 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 .foot-links-bottom{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
 .foot-links-bottom a{font-family:var(--mono);font-size:10px;color:var(--faint);text-decoration:none;transition:color 0.15s}
 .foot-links-bottom a:hover{color:var(--muted)}
+
+#scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;width:46px;height:46px;border-radius:50%;background:rgba(17,17,16,0.95);border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);cursor:pointer;opacity:0;pointer-events:none;visibility:hidden;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s,visibility 0.3s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;backdrop-filter:blur(8px)}
+#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
+#scroll-top:hover{border-color:var(--gold);background:rgba(201,168,76,0.12)}
+@media(max-width:600px){.nav-inner{padding:0.65rem 1.25rem !important}.nav-links{display:none !important}.nav-logo span{display:none !important}.nav-contact{display:none !important}}
+@media(min-width:601px) and (max-width:900px){.nav-links a{font-size:9.5px;padding:3px 7px}.nav-logo span{display:none}.nav-contact{font-size:9px;padding:5px 10px}}
 </style>
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
@@ -482,8 +488,7 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
       <div style="padding:0.6rem 1.25rem;background:rgba(201,168,76,0.05);border-bottom:0.5px solid var(--line2,#2a2a2a);flex-shrink:0;">
         <p style="font-size:10.5px;color:var(--muted,#666);margin:0;">Sample document — for preview purposes only. Not for regulatory submission. &copy; 2026 EU AI Compliance Engine.</p>
       </div>
-      <div id="sample-modal-body" style="flex:1;overflow:hidden;min-height:0;">
-        <iframe id="sample-modal-iframe" src="" title="Sample document preview" style="width:100%;height:100%;border:none;display:block;min-height:540px;"></iframe>
+      <div id="sample-modal-body" style="flex:1;overflow-y:auto;min-height:0;">
       </div>
     </div>
   </div>
@@ -917,26 +922,21 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 </footer>
 
 <script>
-// Nav scroll + scroll-to-top — self-contained, no dependency on shared.js order
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+// Nav scroll + scroll-to-top
 (function(){
   var nav=document.getElementById('main-nav');
+  var st=document.getElementById('scroll-top');
   function updateScroll(){
-    if(nav) nav.classList.toggle('scrolled',window.scrollY>60);
-    var st=document.getElementById('scroll-top');
-    if(st){
-      var show=window.scrollY>400;
-      st.style.opacity=show?'1':'0';
-      st.style.pointerEvents=show?'auto':'none';
-      st.style.transform=show?'translateY(0)':'translateY(8px)';
-    }
+    var y=window.scrollY||window.pageYOffset;
+    if(nav) nav.classList.toggle('scrolled',y>60);
+    if(st) st.classList.toggle('visible',y>400);
   }
   window.addEventListener('scroll',updateScroll,{passive:true});
-  // Run once after DOM is ready
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',updateScroll);
-  } else {
-    updateScroll();
-  }
+  window.addEventListener('touchmove',updateScroll,{passive:true});
+  document.addEventListener('DOMContentLoaded',updateScroll);
+  setTimeout(updateScroll,100);
 })();
 
 // P1 scope check
@@ -1098,16 +1098,23 @@ function openSampleModal(key) {
   var body  = document.getElementById('sample-modal-body');
   var title = document.getElementById('sample-modal-title');
   var dl    = document.getElementById('sample-modal-download');
+  if(!modal||!body) return;
   title.textContent = s.title;
   dl.href = s.pdf;
-  dl.setAttribute('download', s.pdf);
-  body.innerHTML = '<img src="'+s.img+'" alt="'+s.title+'" style="width:100%;display:block;" loading="lazy">';
+  dl.setAttribute('download', s.pdf.split('/').pop());
+  body.innerHTML = '';
+  var img = document.createElement('img');
+  img.src = s.img;
+  img.alt = s.title;
+  img.style.cssText = 'width:100%;display:block;max-width:100%;height:auto;';
+  body.appendChild(img);
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
 function closeSampleModal() {
   var modal = document.getElementById('sample-modal');
   var body  = document.getElementById('sample-modal-body');
+  if(!modal||!body) return;
   modal.style.display = 'none';
   body.innerHTML = '';
   document.body.style.overflow = '';
