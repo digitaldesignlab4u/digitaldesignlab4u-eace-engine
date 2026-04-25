@@ -299,6 +299,25 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
   .nav-logo span{display:none}
   .nav-contact{font-size:9px;padding:5px 10px}
 }
+
+/* ── NAV MOBILE PADDING FIX ── */
+@media(max-width:600px){
+  .nav-links{display:none !important}
+  .nav-contact{display:none !important}
+  .nav-logo span{display:none !important}
+  .nav-inner{height:52px;align-items:center;padding:0 1.25rem !important}
+  .hero{padding-top:0}
+}
+@media(min-width:601px) and (max-width:900px){
+  .nav-links a{font-size:9.5px !important;padding:3px 6px !important}
+  .nav-contact{font-size:9px;padding:4px 10px}
+}
+
+/* ── DOC PREVIEW MOBILE FIX ── */
+.doc-preview-inner{aspect-ratio:3/4;overflow:hidden;position:relative}
+.doc-blur-overlay{position:absolute;bottom:0;left:0;right:0;height:55%;
+  background:linear-gradient(to bottom,transparent,var(--bg2) 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:1rem;gap:6px}
 </style>
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
@@ -1227,7 +1246,7 @@ function runP1Check(){
 </div>
 
 <!-- SCROLL TO TOP -->
-<button id="scroll-top" onclick="scrollTop()" aria-label="Scroll to top of page">
+<button id="scroll-top" aria-label="Scroll to top of page" type="button">
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 

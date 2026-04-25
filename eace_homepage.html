@@ -246,6 +246,17 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 #scroll-top:hover{border-color:var(--gold);background:rgba(201,168,76,0.12)}
 @media(max-width:600px){.nav-inner{padding:0.65rem 1.25rem !important}.nav-links{display:none !important}.nav-logo span{display:none !important}.nav-contact{display:none !important}}
 @media(min-width:601px) and (max-width:900px){.nav-links a{font-size:9.5px;padding:3px 7px}.nav-logo span{display:none}.nav-contact{font-size:9px;padding:5px 10px}}
+
+@media(max-width:600px){
+  .nav-links{display:none !important}
+  .nav-contact{display:none !important}
+  .nav-logo span{display:none !important}
+  .nav-inner{height:52px;align-items:center;padding:0 1.25rem !important}
+}
+@media(min-width:601px) and (max-width:900px){
+  .nav-links a{font-size:9.5px !important;padding:3px 6px !important}
+}
+.doc-preview-inner{aspect-ratio:3/4;overflow:hidden;position:relative}
 </style>
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
@@ -1079,7 +1090,7 @@ function runP1Check(){
 </div>
 
 <!-- SCROLL TO TOP -->
-<button id="scroll-top" onclick="scrollTop()" aria-label="Scroll to top of page">
+<button id="scroll-top" aria-label="Scroll to top of page" type="button">
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 

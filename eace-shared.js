@@ -203,3 +203,24 @@ if(document.readyState==='loading'){
   // DOM already ready (script at end of body, DOMContentLoaded already fired)
   initCookieConsent();
 }
+
+/* ── SCROLL TO TOP — event listener ── */
+(function(){
+  var btn = document.getElementById('scroll-top');
+  if(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+  // Show/hide on scroll
+  function updateBtn(){
+    var y = window.scrollY || window.pageYOffset;
+    if(btn) btn.classList.toggle('visible', y > 400);
+  }
+  window.addEventListener('scroll', updateBtn, {passive:true});
+  window.addEventListener('touchmove', updateBtn, {passive:true});
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', updateBtn);
+  } else { updateBtn(); }
+})();
