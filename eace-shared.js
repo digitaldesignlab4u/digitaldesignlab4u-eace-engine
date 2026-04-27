@@ -210,7 +210,7 @@ function initScrollTop(){
   if(!btn) return;
   btn.addEventListener('click', function(e){
     e.preventDefault();
-    window.scrollTo({top:0, behavior:'smooth'});
+    (document.scrollingElement||document.documentElement||document.body).scrollTo({top:0,behavior:'smooth'});
   });
   function updateBtn(){
     var y = window.scrollY || window.pageYOffset;

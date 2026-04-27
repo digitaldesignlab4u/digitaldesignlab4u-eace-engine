@@ -33,7 +33,7 @@
   --r:3px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.6}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 .wrap{max-width:960px;margin:0 auto;padding:0 2rem}
 img{max-width:100%;display:block}
 
@@ -51,7 +51,12 @@ nav.scrolled{background:rgba(12,12,10,0.97);backdrop-filter:blur(10px);-webkit-b
 .nav-contact:hover{background:rgba(184,153,90,0.1);border-color:var(--gold)}
 
 /* ── HERO ── */
-.hero{position:relative;width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero{position:relative;width:100%;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:110%;height:110%;object-fit:cover;object-position:center 28%;display:block;transform-origin:55% 45%;animation:kenburns 25s ease-in-out infinite alternate;animation-delay:2s;margin:-5%}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(12,12,10,0.05) 0%,rgba(12,12,10,0.28) 40%,rgba(12,12,10,0.82) 75%,rgba(12,12,10,0.97) 100%)}
@@ -319,21 +324,30 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
   .nav-logo span{display:none !important}
 }
 
-/* ── HERO MOBILE — nav clearance fix ── */
+
+/* ── HERO RESPONSIVE — definitive fix ── */
+@media(max-width:1100px){
+  .hero-content{padding-top:6rem}
+}
 @media(max-width:768px){
-  .hero-content{padding-top:5.5rem !important}
+  .hero{min-height:100svh;justify-content:flex-end}
+  .hero-content{padding:6rem 1.5rem 3rem}
 }
 @media(max-width:600px){
   .hero-content{padding:5.5rem 1.25rem 2.5rem !important}
-  .hero-eyebrow{font-size:8px !important;letter-spacing:0.14em !important}
-  .hero-tagline{font-size:8.5px !important;letter-spacing:0.04em !important;margin-bottom:0.75rem !important}
-  .hero-sub{font-size:13px !important;margin-bottom:0.75rem !important}
-  .hero-desc{font-size:13px !important;margin-bottom:1.25rem !important}
-  .cta-row{flex-direction:column !important;align-items:flex-start !important}
+  .hero-eyebrow{font-size:8px !important;letter-spacing:0.12em !important}
+  .hero-tagline{font-size:8.5px !important;margin-bottom:0.65rem !important}
+  .hero-sub{font-size:13px !important;margin-bottom:0.65rem !important}
+  .hero-desc{font-size:13px !important;margin-bottom:1.1rem !important}
+  .cta-row{flex-direction:column !important;align-items:flex-start !important;gap:0.5rem !important}
   .btn-primary{width:100% !important;justify-content:center !important}
+  .btn-ghost,.pilot-live{width:100% !important;justify-content:center !important;text-align:center !important}
 }
 @media(max-width:390px){
   .hero-eyebrow{display:none !important}
+  .hero-content{padding-top:5rem !important}
+}
+
   .hero-content{padding-top:4.75rem !important}
 }
 </style>
@@ -1117,7 +1131,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
 
 <script>
 // Scroll to top
-function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+function scrollTop(){(document.scrollingElement||document.documentElement||document.body).scrollTo({top:0,behavior:'smooth'});}
 
 // Nav scroll — handled here; scroll-top handled by eace-shared.js
 (function(){
