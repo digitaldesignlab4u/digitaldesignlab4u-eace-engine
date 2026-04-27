@@ -297,8 +297,18 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
       <li><a href="risk-governance.html">Risk & Governance</a></li>
     </ul>
     <a href="#contact" class="nav-contact">Contact</a>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="eace_homepage.html" class="active">EU AI Compliance Engine</a>
+  <a href="transparency.html">Transparency Notice</a>
+  <a href="risk-governance.html">Risk &amp; Governance</a>
+  <a href="#contact" class="mm-contact" onclick="closeMobileMenu()">Contact →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1153,5 +1163,43 @@ function closeSampleModal() {
 document.getElementById('sample-modal').addEventListener('click', function(e){ if(e.target===this) closeSampleModal(); });
 </script>
 
+
+<script>
+/* ── HAMBURGER MENU ── */
+(function(){
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target) && !menu.contains(e.target)){
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+function closeMobileMenu(){
+  var menu=document.getElementById('mobile-menu');
+  var btn=document.getElementById('hamburger');
+  if(menu)menu.classList.remove('open');
+  if(btn){btn.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  document.body.style.overflow='';
+}
+</script>
 </body>
 </html>

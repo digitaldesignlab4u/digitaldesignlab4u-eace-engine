@@ -116,9 +116,19 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
       <li><a href="transparency.html" >Transparency Notice</a></li>
       <li><a href="risk-governance.html" class="active" aria-current="page">Risk &amp; Governance</a></li>
     </ul>
-    <a href="eace_homepage.html#contact" class="nav-contact">Contact</a>
+        <a href="#" class="nav-contact">Contact</a>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="eace_homepage.html">EU AI Compliance Engine</a>
+  <a href="transparency.html">Transparency Notice</a>
+  <a href="risk-governance.html" class="active" aria-current="page">Risk &amp; Governance</a>
+  <a href="eace_homepage.html#contact" class="mm-contact">Contact →</a>
+</div>
 
 <div class="wrap" id="main-content">
 
@@ -339,5 +349,31 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
 })();
 </script>
 <script src="eace-shared.js"></script>
+
+<script>
+(function(){
+  var btn=document.getElementById('hamburger');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){
+    var o=menu.classList.toggle('open');
+    btn.classList.toggle('open',o);
+    btn.setAttribute('aria-expanded',o?'true':'false');
+    document.body.style.overflow=o?'hidden':'';
+  });
+  document.addEventListener('click',function(e){
+    if(!btn.contains(e.target)&&!menu.contains(e.target)){
+      menu.classList.remove('open');btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');document.body.style.overflow='';
+    }
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      menu.classList.remove('open');btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');document.body.style.overflow='';
+    });
+  });
+})();
+</script>
 </body>
 </html>
