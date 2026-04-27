@@ -204,23 +204,24 @@ if(document.readyState==='loading'){
   initCookieConsent();
 }
 
-/* ── SCROLL TO TOP — event listener ── */
-(function(){
+/* ── SCROLL TO TOP ── */
+function initScrollTop(){
   var btn = document.getElementById('scroll-top');
-  if(btn){
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
-  }
-  // Show/hide on scroll
+  if(!btn) return;
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
   function updateBtn(){
     var y = window.scrollY || window.pageYOffset;
-    if(btn) btn.classList.toggle('visible', y > 400);
+    btn.classList.toggle('visible', y > 400);
   }
   window.addEventListener('scroll', updateBtn, {passive:true});
   window.addEventListener('touchmove', updateBtn, {passive:true});
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', updateBtn);
-  } else { updateBtn(); }
-})();
+  updateBtn();
+}
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initScrollTop);
+} else {
+  initScrollTop();
+}

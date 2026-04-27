@@ -284,7 +284,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
   display:flex;align-items:center;justify-content:center;
   -webkit-tap-highlight-color:transparent;touch-action:manipulation;
   backdrop-filter:blur(8px)}
-#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
+#scroll-top#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
 #scroll-top:hover{border-color:var(--gold);background:rgba(201,168,76,0.12)}
 
 /* ── NAV MOBILE — self-contained ── */
@@ -318,6 +318,21 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
 .doc-blur-overlay{position:absolute;bottom:0;left:0;right:0;height:55%;
   background:linear-gradient(to bottom,transparent,var(--bg2) 70%);
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:1rem;gap:6px}
+
+/* ── COOKIE BANNER SHOW/HIDE ── */
+#cookie-banner{display:block;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+#cookie-banner.show{transform:translateY(0)}
+#cookie-panel{opacity:0;pointer-events:none;transition:opacity 0.25s}
+#cookie-panel.show{opacity:1;pointer-events:auto}
+#cookie-panel.show .cookie-panel-inner{transform:translateY(0)}
+
+/* ── NAV MOBILE DEFINITIVE ── */
+@media(max-width:600px){
+  .nav-inner{flex-wrap:nowrap !important;padding:0 1.25rem !important;height:52px !important}
+  .nav-links{display:none !important}
+  .nav-contact{display:none !important}
+  .nav-logo span{display:none !important}
+}
 </style>
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
@@ -1091,19 +1106,17 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
 // Scroll to top
 function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
 
-// Nav scroll + scroll-to-top
+// Nav scroll — handled here; scroll-top handled by eace-shared.js
 (function(){
   var nav=document.getElementById('main-nav');
-  var st=document.getElementById('scroll-top');
-  function updateScroll(){
+  function updateNav(){
     var y=window.scrollY||window.pageYOffset;
     if(nav) nav.classList.toggle('scrolled',y>60);
-    if(st) st.classList.toggle('visible',y>400);
   }
-  window.addEventListener('scroll',updateScroll,{passive:true});
-  window.addEventListener('touchmove',updateScroll,{passive:true});
-  document.addEventListener('DOMContentLoaded',updateScroll);
-  setTimeout(updateScroll,100);
+  window.addEventListener('scroll',updateNav,{passive:true});
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',updateNav);
+  } else { updateNav(); }
 })();
 
 // P1 scope check
