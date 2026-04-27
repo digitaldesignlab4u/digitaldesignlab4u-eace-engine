@@ -354,6 +354,54 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
 <!-- <script defer data-domain="YOUR-DOMAIN.com" src="https://plausible.io/js/script.js"></script> -->
+
+<style id="scroll-top-critical">
+#scroll-top{
+  position:fixed !important;
+  right:20px !important;
+  bottom:20px !important;
+  width:44px !important;
+  height:44px !important;
+  border-radius:50% !important;
+  border:0.5px solid rgba(201,168,76,0.5) !important;
+  background:rgba(14,14,11,0.95) !important;
+  color:#c9a84c !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  cursor:pointer !important;
+  z-index:99999 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  transition:opacity 0.3s ease !important;
+}
+#scroll-top.visible{
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+</style>
+
+<style id="hero-responsive-critical">
+:root { --nav-h: 64px; }
+
+/* Tablet fix - remove ghost space */
+@media(max-width:1100px){
+  .hero{ min-height:100dvh !important; height:auto !important; }
+  .hero-content{ padding-top:calc(var(--nav-h) + 2rem) !important; }
+}
+@media(max-width:768px){
+  .hero{ min-height:100svh !important; }
+  .hero-content{ padding-top:calc(var(--nav-h) + 1.5rem) !important; padding-bottom:3rem !important; }
+}
+@media(max-width:600px){
+  .hero-content{ padding-top:calc(var(--nav-h) + 1rem) !important; padding-left:1.25rem !important; padding-right:1.25rem !important; }
+  .hero-eyebrow{ font-size:8px !important; }
+  .hero-tagline{ font-size:8.5px !important; }
+  .cta-row{ flex-direction:column !important; align-items:stretch !important; }
+  .btn-primary{ width:100% !important; justify-content:center !important; }
+  .btn-ghost,.pilot-live{ width:100% !important; justify-content:center !important; }
+}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav" style="position:absolute;top:-100px;left:1rem;background:var(--gold);color:var(--bg);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:11px;text-decoration:none;z-index:9999;transition:top 0.2s" onfocus="this.style.top='1rem'" onblur="this.style.top='-100px'">Skip to main content</a>
@@ -1410,5 +1458,35 @@ function closeMobileMenu(){
   document.body.style.overflow = '';
 }
 </script>
+
+<script id="scroll-top-critical-js">
+(function(){
+  var btn = document.getElementById('scroll-top');
+  if(!btn) return;
+  
+  // Show/hide on scroll
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if(y > 400){
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+  
+  // Click handler
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    window.scrollTo({top:0, behavior:'smooth'});
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
+  
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
 </body>
 </html>

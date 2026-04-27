@@ -103,6 +103,32 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
   .nav-links a{font-size:9.5px !important;padding:3px 6px !important}
 }
 </style>
+
+<style id="scroll-top-critical">
+#scroll-top{
+  position:fixed !important;
+  right:20px !important;
+  bottom:20px !important;
+  width:44px !important;
+  height:44px !important;
+  border-radius:50% !important;
+  border:0.5px solid rgba(201,168,76,0.5) !important;
+  background:rgba(14,14,11,0.95) !important;
+  color:#c9a84c !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  cursor:pointer !important;
+  z-index:99999 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  transition:opacity 0.3s ease !important;
+}
+#scroll-top.visible{
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+</style>
 </head>
 <body>
 
@@ -375,5 +401,35 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
   });
 })();
 </script>
+
+<script id="scroll-top-critical-js">
+(function(){
+  var btn = document.getElementById('scroll-top');
+  if(!btn) return;
+  
+  // Show/hide on scroll
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if(y > 400){
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+  
+  // Click handler
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    window.scrollTo({top:0, behavior:'smooth'});
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
+  
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
 </body>
 </html>
