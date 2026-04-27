@@ -242,7 +242,7 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 .foot-links-bottom a:hover{color:var(--muted)}
 
 #scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;width:46px;height:46px;border-radius:50%;background:rgba(17,17,16,0.95);border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);cursor:pointer;opacity:0;pointer-events:none;visibility:hidden;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s,visibility 0.3s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;backdrop-filter:blur(8px)}
-#scroll-top#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
+#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
 #scroll-top:hover{border-color:var(--gold);background:rgba(201,168,76,0.12)}
 @media(max-width:600px){.nav-inner{padding:0.65rem 1.25rem !important}.nav-links{display:none !important}.nav-logo span{display:none !important}.nav-contact{display:none !important}}
 @media(min-width:601px) and (max-width:900px){.nav-links a{font-size:9.5px;padding:3px 7px}.nav-logo span{display:none}.nav-contact{font-size:9px;padding:5px 10px}}
@@ -269,6 +269,16 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
   .nav-contact{display:none !important}
   .nav-logo span{display:none !important}
 }
+
+@media(max-width:768px){.hero-content{padding-top:5.5rem !important}}
+@media(max-width:600px){
+  .hero-content{padding:5.5rem 1.25rem 2.5rem !important}
+  .hero-eyebrow{font-size:8px !important}
+  .hero-tagline{font-size:8.5px !important;margin-bottom:0.75rem !important}
+  .cta-row{flex-direction:column !important;align-items:flex-start !important}
+  .btn-primary{width:100% !important;justify-content:center !important}
+}
+@media(max-width:390px){.hero-eyebrow{display:none !important}}
 </style>
 <!-- Plausible Analytics — GDPR compliant, no cookies, no consent banner required -->
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
