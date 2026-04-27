@@ -271,21 +271,6 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-/* ── SCROLL TO TOP — self-contained ── */
-#scroll-top{
-  position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;
-  width:46px;height:46px;border-radius:50%;
-  background:rgba(17,17,16,0.95);
-  border:0.5px solid rgba(201,168,76,0.5);
-  color:var(--gold);cursor:pointer;
-  opacity:0;pointer-events:none;visibility:hidden;
-  transform:translateY(10px);
-  transition:opacity 0.3s,transform 0.3s,visibility 0.3s;
-  display:flex;align-items:center;justify-content:center;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  backdrop-filter:blur(8px)}
-#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
-#scroll-top:hover{border-color:var(--gold);background:rgba(201,168,76,0.12)}
 
 /* ── NAV MOBILE — self-contained ── */
 @media(max-width:600px){
@@ -370,8 +355,18 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
       <li><a href="risk-governance.html">Risk & Governance</a></li>
     </ul>
     <a href="#contact" class="nav-contact">Contact</a>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="eace_homepage.html" class="active">EU AI Compliance Engine</a>
+  <a href="transparency.html">Transparency Notice</a>
+  <a href="risk-governance.html">Risk &amp; Governance</a>
+  <a href="#contact" class="mm-contact" onclick="closeMobileMenu()">Contact →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1360,6 +1355,46 @@ document.getElementById('sample-modal').addEventListener('click', function(e){ i
   },{threshold:0.08});
   secs.forEach(function(s){ obs.observe(s); });
 })();
+</script>
+
+<script>
+/* ── HAMBURGER MENU ── */
+(function(){
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  // Close on outside click
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target) && !menu.contains(e.target)){
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+  });
+  // Close on link click
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+function closeMobileMenu(){
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('hamburger');
+  if(menu) menu.classList.remove('open');
+  if(btn){ btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  document.body.style.overflow = '';
+}
 </script>
 </body>
 </html>
