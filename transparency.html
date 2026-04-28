@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transparency Notice Generator — EU AI Act Art. 50, 52 & 26(11) | From Crisis to Authority™</title>
+<title>EACE — Transparency Notice Generator</title>
 <meta name="description" content="Generate EU AI Act-compliant transparency notices for any deployment context. HTML generator, DOCX template, TXT prompt edition. Six languages, eight channels. Audit-ready.">
 <meta name="keywords" content="EU AI Act transparency notice, Article 50, Article 52, Article 26(11), GPAI transparency, AI interaction notice, deepfake notice, worker transparency, EU AI compliance">
 <meta property="og:title" content="Transparency Notice Generator — EU AI Act | From Crisis to Authority™">
@@ -121,31 +121,10 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
 }
 </style>
 
-<style id="scroll-top-critical">
-#scroll-top{
-  position:fixed !important;
-  right:20px !important;
-  bottom:20px !important;
-  width:44px !important;
-  height:44px !important;
-  border-radius:50% !important;
-  border:0.5px solid rgba(201,168,76,0.5) !important;
-  background:rgba(14,14,11,0.95) !important;
-  color:#c9a84c !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  cursor:pointer !important;
-  z-index:99999 !important;
-  opacity:0 !important;
-  pointer-events:none !important;
-  transition:opacity 0.3s ease !important;
-}
-#scroll-top.visible{
-  opacity:1 !important;
-  pointer-events:auto !important;
-}
-</style>
+
+
+
+
 </head>
 <body>
 
@@ -406,28 +385,10 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
     </div>
   </div>
 </div>
-<button id="scroll-top" aria-label="Scroll to top" type="button">
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
+
 
 <script>
-(function(){
-  var nav=document.getElementById('main-nav');
-  function updateScroll(){
-    if(nav) nav.classList.toggle('scrolled',window.scrollY>60);
-    var st=document.getElementById('scroll-top');
-    if(st){
-      var show=window.scrollY>400;
-      st.style.opacity=show?'1':'0';
-      st.style.pointerEvents=show?'auto':'none';
-      st.style.transform=show?'translateY(0)':'translateY(8px)';
-    }
-  }
-  window.addEventListener('scroll',updateScroll,{passive:true});
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',updateScroll);
-  } else { updateScroll(); }
-})();
+
 </script>
 <script src="eace-shared.js"></script>
 
@@ -457,34 +418,11 @@ footer{border-top:0.5px solid var(--line);padding:2.5rem 0 2rem}
 })();
 </script>
 
-<script id="scroll-top-critical-js">
-(function(){
-  var btn = document.getElementById('scroll-top');
-  if(!btn) return;
-  
-  // Show/hide on scroll
-  function onScroll(){
-    var y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if(y > 400){
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  }
-  
-  // Click handler
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    window.scrollTo({top:0, behavior:'smooth'});
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  });
-  
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-})();
-</script>
+
+
+
+
+
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EU AI Compliance Engine — Audit-Ready EU AI Act Compliance | From Crisis to Authority™</title>
+<title>EACE — EU AI Compliance Engine | From Crisis to Authority™</title>
 <meta name="description" content="Complete EU AI Act compliance infrastructure. Four deterministic engines, 70+ governance documents, ISO/IEC 42001 aligned. Audit-ready outputs for high-risk AI providers and deployers across all EU member states.">
 <meta name="keywords" content="EU AI Act compliance, ISO 42001, AI governance, GDPR, high-risk AI, compliance engine, audit-ready, technical documentation, FRIA, DPIA, transparency notice, AI Act provider, AI Act deployer, notified body, market surveillance">
 <meta property="og:title" content="EU AI Compliance Engine — From Crisis to Authority™">
@@ -241,9 +241,9 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 .foot-links-bottom a{font-family:var(--mono);font-size:10px;color:var(--faint);text-decoration:none;transition:color 0.15s}
 .foot-links-bottom a:hover{color:var(--muted)}
 
-#scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;width:46px;height:46px;border-radius:50%;background:rgba(17,17,16,0.95);border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);cursor:pointer;opacity:0;pointer-events:none;visibility:hidden;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s,visibility 0.3s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;backdrop-filter:blur(8px)}
-#scroll-top.visible{opacity:1;pointer-events:auto;visibility:visible;transform:translateY(0)}
-#scroll-top:hover{border-color:var(--gold);background:rgba(201,168,76,0.12)}
+
+
+
 @media(max-width:600px){.nav-inner{padding:0.65rem 1.25rem !important}.nav-links{display:none !important}.nav-logo span{display:none !important}.nav-contact{display:none !important}}
 @media(min-width:601px) and (max-width:900px){.nav-links a{font-size:9.5px;padding:3px 7px}.nav-logo span{display:none}.nav-contact{font-size:9px;padding:5px 10px}}
 
@@ -295,51 +295,91 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 <!-- Replace YOUR-DOMAIN.com with your actual Vercel domain once deployed -->
 <!-- <script defer data-domain="YOUR-DOMAIN.com" src="https://plausible.io/js/script.js"></script> -->
 
-<style id="scroll-top-critical">
-#scroll-top{
-  position:fixed !important;
-  right:20px !important;
-  bottom:20px !important;
-  width:44px !important;
-  height:44px !important;
-  border-radius:50% !important;
-  border:0.5px solid rgba(201,168,76,0.5) !important;
-  background:rgba(14,14,11,0.95) !important;
-  color:#c9a84c !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  cursor:pointer !important;
-  z-index:99999 !important;
-  opacity:0 !important;
-  pointer-events:none !important;
-  transition:opacity 0.3s ease !important;
-}
-#scroll-top.visible{
-  opacity:1 !important;
-  pointer-events:auto !important;
-}
-</style>
 
-<style id="hero-responsive-critical">
+
+
+
+
+
+
+
+
+<style id="hci">
+/* ============================================
+   NAV + HERO FIX — definitive
+   Nav is fixed, ~64px tall on all screens
+   Hero content pushed below nav with margin
+   ============================================ */
 :root { --nav-h: 64px; }
 
-/* Tablet fix - remove ghost space */
-@media(max-width:1100px){
-  .hero{ min-height:100dvh !important; height:auto !important; }
-  .hero-content{ padding-top:calc(var(--nav-h) + 2rem) !important; }
+/* Desktop — hero content sits at bottom, enough space */
+.hero-content {
+  padding-bottom: 4rem;
 }
-@media(max-width:768px){
-  .hero{ min-height:100svh !important; }
-  .hero-content{ padding-top:calc(var(--nav-h) + 1.5rem) !important; padding-bottom:3rem !important; }
+
+/* Large laptop 1024-1280px */
+@media (max-width: 1280px) {
+  .hero-content { padding-top: 2rem; }
 }
-@media(max-width:600px){
-  .hero-content{ padding-top:calc(var(--nav-h) + 1rem) !important; padding-left:1.25rem !important; padding-right:1.25rem !important; }
-  .hero-eyebrow{ font-size:8px !important; }
-  .hero-tagline{ font-size:8.5px !important; }
-  .cta-row{ flex-direction:column !important; align-items:stretch !important; }
-  .btn-primary{ width:100% !important; justify-content:center !important; }
-  .btn-ghost,.pilot-live{ width:100% !important; justify-content:center !important; }
+
+/* Tablet — the ghost space fix */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero {
+    min-height: 100svh !important;
+    height: auto !important;
+  }
+  .hero-content {
+    padding-top: calc(var(--nav-h) + 3rem) !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 100svh !important;
+    justify-content: flex-start !important;
+  }
+  .hero-content {
+    padding-top: calc(var(--nav-h) + 1.5rem) !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .hero-eyebrow { font-size: 8px !important; letter-spacing: 0.12em !important; }
+  .hero-tagline { font-size: 8.5px !important; margin-bottom: 0.65rem !important; }
+  .hero-sub { font-size: 13px !important; margin-bottom: 0.65rem !important; }
+  .hero-desc { font-size: 13px !important; margin-bottom: 1rem !important; }
+  .cta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+  }
+  .btn-primary, .btn-ghost, .pilot-live {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: flex !important;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 390px) {
+  .hero-eyebrow { display: none !important; }
+  .hero-content { padding-top: calc(var(--nav-h) + 1rem) !important; }
+}
+
+/* NAV MOBILE */
+@media (max-width: 600px) {
+  .nav-links { display: none !important; }
+  .nav-contact { display: none !important; }
+  .nav-logo span { display: none !important; }
+  .nav-inner {
+    height: var(--nav-h) !important;
+    padding: 0 1.25rem !important;
+    flex-wrap: nowrap !important;
+  }
+  .hamburger { display: flex !important; }
 }
 </style>
 </head>
@@ -1024,20 +1064,7 @@ footer{border-top:0.5px solid var(--line);padding:3rem 0 2rem}
 </footer>
 
 <script>
-function scrollTop(){(document.scrollingElement||document.documentElement||document.body).scrollTo({top:0,behavior:'smooth'});}
-
-// Nav scroll only — scroll-top handled by eace-shared.js
-(function(){
-  var nav=document.getElementById('main-nav');
-  function updateNav(){
-    var y=window.scrollY||window.pageYOffset;
-    if(nav) nav.classList.toggle('scrolled',y>60);
-  }
-  window.addEventListener('scroll',updateNav,{passive:true});
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',updateNav);
-  } else { updateNav(); }
-})();
+);}
 
 // P1 scope check
 function runP1Check(){
@@ -1082,17 +1109,7 @@ function runP1Check(){
 }
 </script>
 
-<!-- SCROLL TO TOP -->
 
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-modal="false">
-  <div class="cookie-banner-inner">
-    <div class="cookie-banner-text">
-      <p class="cookie-banner-title">Your data. Your control.</p>
-      <p class="cookie-banner-desc">Only essential cookies are active by default. You decide the rest &mdash; no dark patterns, no hidden trackers.</p>
-    </div>
-    <div class="cookie-banner-btns">
-      <button class="cb-btn cb-accept" onclick="acceptAll()" aria-label="Accept all cookies">Accept all</button>
       <button class="cb-btn cb-reject" onclick="rejectNonEssential()" aria-label="Reject non-essential cookies">Reject non-essential</button>
       <button class="cb-btn cb-config" onclick="openPanel()" aria-label="Configure cookie preferences">Configure</button>
     </div>
@@ -1179,9 +1196,7 @@ function runP1Check(){
 </div>
 
 <!-- SCROLL TO TOP -->
-<button id="scroll-top" aria-label="Scroll to top of page" type="button">
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
+
 
 <script src="eace-shared.js"></script>
 
@@ -1261,34 +1276,11 @@ function closeMobileMenu(){
 }
 </script>
 
-<script id="scroll-top-critical-js">
-(function(){
-  var btn = document.getElementById('scroll-top');
-  if(!btn) return;
-  
-  // Show/hide on scroll
-  function onScroll(){
-    var y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if(y > 400){
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  }
-  
-  // Click handler
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    window.scrollTo({top:0, behavior:'smooth'});
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  });
-  
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-})();
-</script>
+
+
+
+
+
 
 </body>
 </html>
